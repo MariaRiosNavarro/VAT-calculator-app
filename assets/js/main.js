@@ -127,7 +127,7 @@ const calculateVat = () => {
   // #Empty the numberInput when click
 
   numberInput.addEventListener("click", function () {
-    numberInput.value = ""; // Set the value of the input field to empty when the focus is set on it
+    numberInput.value = "";
     alert.innerHTML = "";
     outputAInput.innerHTML = "";
     outputBInput.innerHTML = "";
