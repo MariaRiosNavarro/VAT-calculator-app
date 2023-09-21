@@ -40,9 +40,15 @@ const calculateVat = () => {
 
   const numberValue = numberInput.value;
 
+  console.log(numberValue);
+  console.log(typeof numberValue);
+
   // use text type to accept float numbers, we transform here as float number if need it
 
   const number = parseFloat(numberValue.replace(",", "."));
+
+  console.log("value", number);
+  console.log(typeof number);
 
   // * -------------------------OUTPUTS------------------
 
@@ -52,8 +58,9 @@ const calculateVat = () => {
 
   // # -----------------------Error Handling-------------------------------------
 
-  if (numberValue <= 0) {
-    return (alert.innerHTML = `<p class="redBG">Bitte, geben Sie ein gültige Wert<p>`);
+  if (number <= 0 || isNaN(number)) {
+    alert.innerHTML = `<p class="redBG">Bitte, geben Sie ein gültige Wert<p>`;
+    return;
   }
 
   // # -----------------------Calculation-----------------------------------------
@@ -111,6 +118,7 @@ const calculateVat = () => {
   // #Empty the numberInput if they have the focus inside
   numberInput.addEventListener("focus", function () {
     numberInput.value = ""; // Set the value of the input field to empty when the focus is set on it
+    alert.innerHTML = "";
   });
 };
 
