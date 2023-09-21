@@ -19,3 +19,8 @@
 // - 5: Calculate VAT
 
 // - 6: Reset the input when the focus is on it
+
+// ADD Text of Labels for OptionB: net to gross (default A)
+
+// for data-js="inputNumberLabel" = `Nettobetrag(Preis ohne Mehrwersteuer) in Euro <span class="red">*</span>`
+// for data-js="outputB-label" = `Bruttobetrag(Endpreis)`;
