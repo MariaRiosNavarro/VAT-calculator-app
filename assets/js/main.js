@@ -58,7 +58,16 @@ const calculateVat = () => {
 
   // # -----------------------Error Handling-------------------------------------
 
-  if (number <= 0 || isNaN(number)) {
+  // Add a regex to check if the numberValue is only a number
+
+  const numberRegex = /^[0-9]+(\.[0-9]+)?$/;
+
+  if (
+    !numberRegex.test(numberValue) ||
+    number <= 0 ||
+    isNaN(number) ||
+    !isFinite(number)
+  ) {
     alert.innerHTML = `<p class="redBG">Bitte, geben Sie ein gültige Wert<p>`;
     return;
   }
@@ -116,9 +125,13 @@ const calculateVat = () => {
   }
 
   // #Empty the numberInput if they have the focus inside
-  numberInput.addEventListener("focus", function () {
+
+  numberInput.addEventListener("click", function () {
     numberInput.value = ""; // Set the value of the input field to empty when the focus is set on it
     alert.innerHTML = "";
+    outputAInput.innerHTML = "";
+    outputBInput.innerHTML = "";
+    return;
   });
 };
 
@@ -134,12 +147,12 @@ const changeLabel = () => {
   const directionInput = document.querySelector(
     'input[name="radio-direction"]:checked'
   ); // default net->gross
-
+  const direction = directionInput.value;
+  // labels
   const numberInputLabel = document.querySelector(
     '[data-js="inputNumberLabel"]'
   );
   const outputBLabel = document.querySelector('[data-js="outputB-label"]');
-  const direction = directionInput.value;
 
   // ----------function
 
