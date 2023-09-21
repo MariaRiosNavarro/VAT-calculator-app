@@ -71,7 +71,10 @@
           </article>
           <!-- -------------------------- number input (use text type to accept float numbers)-->
           <article class="number-input-container">
-            <label for="inputNumber" data-js="inputNumberLabel"
+            <label
+              class="number-input"
+              for="inputNumber"
+              data-js="inputNumberLabel"
               >Nettobetrag (Preis inklusive Mehrwertsteuer) in Euro
               <span class="red">*</span>
             </label>
@@ -90,7 +93,7 @@
           <article>
             <!--------------------Output A -------------------->
             <h4 data-js="outputA-label">Merhwertsteuerbetrag</h4>
-            <div>
+            <div class="output">
               <span>€</span>
               <p data-js="outputA"></p>
             </div>
@@ -98,7 +101,7 @@
           <article>
             <!--------------------Output B -------------------->
             <h4 data-js="outputB-label">Bruttobetrag (Endpreis)</h4>
-            <div>
+            <div class="output">
               <span>€</span>
               <p data-js="outputB"></p>
             </div>

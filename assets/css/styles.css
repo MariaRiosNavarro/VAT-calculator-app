@@ -66,6 +66,16 @@ p {
   padding: 0.2rem;
 }
 
+input {
+  padding: 0.3rem;
+  border-radius: 3px;
+  border: none;
+}
+
+.number-input {
+  margin-bottom: 0.3rem;
+}
+
 .number-input-container {
   display: flex;
   flex-direction: column;
@@ -90,4 +100,10 @@ input[type="submit"] {
   background-color: red;
   border-radius: 2px;
   color: bisque;
+}
+
+.output {
+  display: flex;
+  align-items: center;
+  height: 2rem;
 }

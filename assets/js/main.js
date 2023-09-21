@@ -71,41 +71,62 @@ const calculateVat = () => {
 
   // ? ----declarate work Variables
 
+  // strings
+
   let valueVat = "";
   let grossValue = "";
   let netValue = "";
 
+  // numbers
+
+  let valueVatExact = 0;
+  let grossValueExact = 0;
+  let netValueExact = 0;
+
+  // -(direction === "netgross") is default direction and checked at the beginning
+
   if (direction === "netgross") {
-    valueVat = calculateVatAmount(number, vat);
-    console.log("value netgross", valueVat);
-    grossValue = calculateGross(number, valueVat);
-    console.log("grossValue nettgross", grossValue);
+    // use exact number for calculation
+    valueVatExact = calculateVatAmount(number, vat);
+    console.log("valueVatExact" + typeof valueVatExact);
+    grossValueExact = calculateGross(number, valueVatExact);
+    // round the number for output
+    valueVat = valueVatExact.toFixed(2);
+    grossValue = grossValueExact.toFixed(2);
     // Add outputs
     outputAInput.innerHTML = valueVat;
     outputBInput.innerHTML = grossValue;
   } else {
-    netValue = calculateNet(number, vat);
-    console.log("netValue grossnet", netValue);
-    valueVat = calculateVatAmount(netValue, vat);
-    console.log("valueVat grossnet", valueVat);
+    // use exact number for calculation
+    netValueExact = calculateNet(number, vat);
+    valueVatExact = calculateVatAmount(netValue, vat);
+    // round the number for output
+    valueVat = valueVatExact.toFixed(2);
+    netValue = netValueExact.toFixed(2);
     //Add outputs
     outputAInput.innerHTML = valueVat;
     outputBInput.innerHTML = netValue;
   }
 };
 
+// * -------------------- label that will change the name wenn optionA(default netgross)/optionB(grossnet) ist checked
+
 const changeLabel = () => {
+  // ---------save variables
+
   const directionInput = document.querySelector(
     'input[name="radio-direction"]:checked'
   ); // default net->gross
-  // * -------------------- label that will change the name wenn option B ist checked
+
   const numberInputLabel = document.querySelector(
     '[data-js="inputNumberLabel"]'
   );
   const outputBLabel = document.querySelector('[data-js="outputB-label"]');
   const direction = directionInput.value;
+
+  // ----------function
+
   if (direction === "netgross") {
-    // change the names
     numberInputLabel.innerHTML = `Nettobetrag (Preis inklusive Mehrwertsteuer) in Euro
         <span class="red">*</span>`;
     outputBLabel.innerHTML = `Bruttobetrag(Endpreis)`;
