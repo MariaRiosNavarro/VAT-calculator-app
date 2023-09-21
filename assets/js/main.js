@@ -29,26 +29,15 @@ const calculateVat = () => {
   const directionInput = document.querySelector(
     'input[name="radio-direction"]:checked'
   ); // default net->gross
-
   const direction = directionInput.value;
 
   const vatInput = document.querySelector('input[name="vat"]:checked'); // default 19
-
   const vat = Number(vatInput.value);
 
   const numberInput = document.querySelector('[data-js="inputNumber"]');
-
   const numberValue = numberInput.value;
-
-  console.log(numberValue);
-  console.log(typeof numberValue);
-
   // use text type to accept float numbers, we transform here as float number if need it
-
   const number = parseFloat(numberValue.replace(",", "."));
-
-  console.log("value", number);
-  console.log(typeof number);
 
   // * -------------------------OUTPUTS------------------
 
@@ -58,21 +47,18 @@ const calculateVat = () => {
 
   // # -----------------------Error Handling-------------------------------------
 
-  // Add a regex to check if the numberValue is only a number
+  // Add a regex (numbers and , or .) to check if the numberValue is only a number
 
-  const numberRegex = /^[0-9]+(\.[0-9]+)?$/;
+  const numberRegex = /^[\d,.]+$/;
 
-  if (
-    !numberRegex.test(numberValue) ||
-    number <= 0 ||
-    isNaN(number) ||
-    !isFinite(number)
-  ) {
+  if (!numberRegex.test(number) || isNaN(number) || number < 0.01) {
     alert.innerHTML = `<p class="redBG">Bitte, geben Sie ein gültige Wert<p>`;
     return;
   }
 
   // # -----------------------Calculation-----------------------------------------
+
+  alert.innerHTML = "";
 
   // ---------Vat calculation
 
@@ -126,12 +112,11 @@ const calculateVat = () => {
 
   // #Empty the numberInput when click
 
-  numberInput.addEventListener("click", function () {
+  numberInput.addEventListener("focus", function () {
     numberInput.value = "";
     alert.innerHTML = "";
     outputAInput.innerHTML = "";
     outputBInput.innerHTML = "";
-    return;
   });
 };
 
