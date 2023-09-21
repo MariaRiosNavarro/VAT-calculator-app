@@ -1,8 +1,8 @@
-# Euro-Vat-Calculator:
+# Euro-Vat-Calculator
+
+# [Deployment](https://mariariosnavarro.github.io/VAT-calculator-app/)
 
 - Input accept `,` or `.` for decimals -> €0.01 = €0,01
-
-# [Deployment]()
 
 <div>
 
