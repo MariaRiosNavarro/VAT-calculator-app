@@ -45,13 +45,6 @@ const calculateVat = () => {
   console.log({ number });
   console.log(typeof number);
 
-  // * -------------------- label that will change the name wenn option B ist checked
-
-  const numberInputLabel = document.querySelector(
-    '[data-js="inputNumberLabel"]'
-  );
-  const outputBLabel = document.querySelector('[data-js="outputB-label"]');
-
   // * -------------------------OUTPUTS
 
   const outputAInput = document.querySelector('[data-js="outputA"]');
@@ -87,12 +80,38 @@ const calculateVat = () => {
     console.log("value netgross", valueVat);
     grossValue = calculateGross(number, valueVat);
     console.log("grossValue nettgross", grossValue);
+    // Add outputs
+    outputAInput.innerHTML = valueVat;
+    outputBInput.innerHTML = grossValue;
   } else {
     netValue = calculateNet(number, vat);
     console.log("netValue grossnet", netValue);
     valueVat = calculateVatAmount(netValue, vat);
     console.log("valueVat grossnet", valueVat);
+    //Add outputs
+    outputAInput.innerHTML = valueVat;
+    outputBInput.innerHTML = netValue;
   }
+};
 
-  //   console.log({ vatAmount }, { gross }, { net });
+const changeLabel = () => {
+  const directionInput = document.querySelector(
+    'input[name="radio-direction"]:checked'
+  ); // default net->gross
+  // * -------------------- label that will change the name wenn option B ist checked
+  const numberInputLabel = document.querySelector(
+    '[data-js="inputNumberLabel"]'
+  );
+  const outputBLabel = document.querySelector('[data-js="outputB-label"]');
+  const direction = directionInput.value;
+  if (direction === "netgross") {
+    // change the names
+    numberInputLabel.innerHTML = `Nettobetrag (Preis inklusive Mehrwertsteuer) in Euro
+        <span class="red">*</span>`;
+    outputBLabel.innerHTML = `Bruttobetrag(Endpreis)`;
+  } else {
+    // change the names for grossnet
+    numberInputLabel.innerHTML = `Bruttobetrag (Preis inklusive Mehrwersteuer) in Euro <span class="red">*</span>`;
+    outputBLabel.innerHTML = `Nettobetrag(Endpreis)`;
+  }
 };
