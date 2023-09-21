@@ -9,7 +9,8 @@
   <body>
     <main>
       <h1>Mehrwertsteuer-Rechner</h1>
-      <form onsubmit="calculate(); return false">
+      <div data-js="alert" class="alert"></div>
+      <form onsubmit="calculateVat(); return false">
         <!--------------------------!inputs ----------------------------------->
         <fieldset>
           <article class="radio-column">
@@ -66,14 +67,14 @@
               <label for="smvat">7%</label>
             </div>
           </article>
-          <!-- -------------------------- number input -->
+          <!-- -------------------------- number input (use text type to accept float numbers)-->
           <article class="number-input-container">
             <label for="inputNumber" data-js="inputNumberLabel"
               >Nettobetrag (Preis inklusive Mehrwertsteuer) in Euro
               <span class="red">*</span>
             </label>
             <input
-              type="number"
+              type="text"
               data-js="inputNumber"
               id="inputNumber"
               name="inputNumber"

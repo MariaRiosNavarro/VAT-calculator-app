@@ -20,7 +20,79 @@
 
 // - 6: Reset the input when the focus is on it
 
-// ADD Text of Labels for OptionB(gross->net)    (default is A)
+// # -------------------FUNCTION-----------------------
 
-// for data-js="inputNumberLabel" = `Bruttobetrag (Preis inklusive Mehrwersteuer) in Euro <span class="red">*</span>`
-// for data-js="outputB-label" = `Nettobetrag(Endpreis)`;
+const calculateVat = () => {
+  // -------------------!SAVE INPUTS, LABELS & OUTPUS
+
+  // * -------------------------- inputs
+
+  const directionInput = document.querySelector(
+    'input[name="radio-direction"]:checked'
+  ); // default net->gross
+
+  const direction = directionInput.value;
+
+  const vatInput = document.querySelector('input[name="vat"]:checked'); // default 19
+
+  const vat = Number(vatInput.value);
+
+  const numberInput = document.querySelector('[data-js="inputNumber"]');
+
+  const numberValue = numberInput.value;
+  // use text type to accept float numbers, we transform here as float number
+  const number = parseFloat(numberValue.replace(",", "."));
+  console.log({ number });
+  console.log(typeof number);
+
+  // * -------------------- label that will change the name wenn option B ist checked
+
+  const numberInputLabel = document.querySelector(
+    '[data-js="inputNumberLabel"]'
+  );
+  const outputBLabel = document.querySelector('[data-js="outputB-label"]');
+
+  // * -------------------------OUTPUTS
+
+  const outputAInput = document.querySelector('[data-js="outputA"]');
+  const outputBInput = document.querySelector('[data-js="outputB"]');
+  const alert = document.querySelector('[data-js="alert"]');
+
+  // # ---------------Error Handling
+
+  if (numberValue <= 0) {
+    return (alert.innerHTML = `<p class="redBG">Bitte, geben Sie ein gültige Wert<p>`);
+  }
+
+  // # ---------------------Calculation-----------------------------
+
+  // -Vat calculation
+  const calculateVatAmount = (net, vat) => net * (vat / 100);
+
+  // -gross calculation
+  const calculateGross = (net, vatAmount) => net + vatAmount;
+
+  // -net calculation
+
+  const calculateNet = (gross, vat) => gross / (1 + vat / 100);
+
+  // ? ----declarate work Variables
+
+  let valueVat = "";
+  let grossValue = "";
+  let netValue = "";
+
+  if (direction === "netgross") {
+    valueVat = calculateVatAmount(number, vat);
+    console.log("value netgross", valueVat);
+    grossValue = calculateGross(number, valueVat);
+    console.log("grossValue nettgross", grossValue);
+  } else {
+    netValue = calculateNet(number, vat);
+    console.log("netValue grossnet", netValue);
+    valueVat = calculateVatAmount(netValue, vat);
+    console.log("valueVat grossnet", valueVat);
+  }
+
+  //   console.log({ vatAmount }, { gross }, { net });
+};
