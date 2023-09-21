@@ -5,3 +5,68 @@
   margin: 0;
   padding: 0;
 }
+
+html {
+  font-size: 62.5%;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.blue {
+  color: blue;
+}
+
+.red {
+  color: red;
+}
+
+main {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+form {
+  width: 80%;
+  border: 1px solid black;
+  border-radius: 8px;
+}
+
+fieldset {
+  border-radius: 5px;
+  margin: 0.3rem;
+  padding: 1rem;
+}
+
+article {
+  background-color: lightgray;
+  padding: 0.3rem;
+  margin: 0.3rem;
+  border-radius: 3px;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+h3 {
+  padding: 0.5rem 0;
+}
+
+.number-input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+input[type="submit"] {
+  width: 100%;
+  background-color: blue;
+  color: azure;
+  padding: 0.3rem;
+  border: none;
+  border-radius: 3px;
+}

@@ -7,59 +7,67 @@
     <title>Vat Calculator</title>
   </head>
   <body>
-    <header><h1>Mehrwertsteuer-Rechner</h1></header>
     <main>
+      <h1>Mehrwertsteuer-Rechner</h1>
       <form onsubmit="calculate(); return false">
         <!--------------------------!inputs ----------------------------------->
         <fieldset>
-          <article>
+          <article class="radio-column">
             <!-- ------------------direction choice (nett->gross default) -->
             <h3>Was soll berechnet werden?</h3>
-            <input
-              type="radio"
-              name="radio-direction"
-              value="netgross"
-              id="netgross"
-              data-js="netgross"
-              checked
-            />
-            <label for="netgross"
-              >Mehrwehrsteuer aufschlagen (Netto zu Brutto)</label
-            >
-            <input
-              type="radio"
-              name="radio-direction"
-              value="grossnet"
-              id="grossnet"
-              data-js="grossnet"
-            />
-            <label for="grossnet"
-              >Mehrwehrsteuer aufschlagen (Brutto zu Netto)</label
-            >
+            <div class="wrapper">
+              <input
+                type="radio"
+                name="radio-direction"
+                value="netgross"
+                id="netgross"
+                data-js="netgross"
+                checked
+              />
+              <label for="netgross"
+                >Mehrwehrsteuer aufschlagen (Netto zu Brutto)</label
+              >
+            </div>
+            <div class="wrapper">
+              <input
+                type="radio"
+                name="radio-direction"
+                value="grossnet"
+                id="grossnet"
+                data-js="grossnet"
+              />
+              <label for="grossnet"
+                >Mehrwehrsteuer aufschlagen (Brutto zu Netto)</label
+              >
+            </div>
           </article>
           <!------------------------------Vat Value choice -->
-          <article>
+          <article class="radio-column">
             <h3>Mehrwehrsteuersatz</h3>
-            <input
-              type="radio"
-              name="vat"
-              value="19"
-              id="bigvat"
-              data-js="bigvat"
-              checked
-            />
-            <label for="bigvat">19%</label>
-            <input
-              type="radio"
-              name="vat"
-              value="7"
-              id="smvat"
-              data-js="smvat"
-            />
-            <label for="bigvat">7%</label>
+            <div class="wrapper">
+              <input
+                type="radio"
+                name="vat"
+                value="19"
+                id="bigvat"
+                data-js="bigvat"
+                checked
+              />
+              <label for="bigvat">19%</label>
+            </div>
+            <div class="wrapper">
+              <input
+                type="radio"
+                name="vat"
+                value="7"
+                id="smvat"
+                data-js="smvat"
+              />
+              <label for="smvat">7%</label>
+            </div>
           </article>
           <!-- -------------------------- number input -->
-          <article>
+          <article class="number-input-container">
             <label for="inputNumber" data-js="inputNumberLabel"
               >Nettobetrag (Preis inklusive Mehrwertsteuer) in Euro
               <span class="red">*</span>
@@ -75,7 +83,7 @@
         </fieldset>
         <!--------------------------! outputs --------------------------------->
         <fieldset>
-          <h3>Ergebnis</h3>
+          <h3 class="blue">Ergebnis</h3>
           <article>
             <!--------------------Output A -------------------->
             <h4 data-js="outputA-label">Merhwertsteuerbetrag</h4>
@@ -83,6 +91,8 @@
               <span>€</span>
               <p data-js="outputA"></p>
             </div>
+          </article>
+          <article>
             <!--------------------Output B -------------------->
             <h4 data-js="outputB-label">Bruttobetrag (Endpreis)</h4>
             <div>
@@ -93,7 +103,6 @@
         </fieldset>
       </form>
     </main>
-    <footer></footer>
     <script src="./assets/js/main.js"></script>
   </body>
 </html>
