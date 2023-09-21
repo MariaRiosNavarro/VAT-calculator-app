@@ -93,13 +93,16 @@ input[type="submit"] {
 
 .alert {
   display: block;
-  height: 2.5rem;
+  height: 3rem;
 }
 
 .redBG {
   background-color: red;
   border-radius: 2px;
   color: bisque;
+  width: 100%;
+  text-align: center;
+  padding: 0.5rem 3rem;
 }
 
 .output {
