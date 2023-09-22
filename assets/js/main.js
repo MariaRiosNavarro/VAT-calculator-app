@@ -57,6 +57,7 @@ const calculateVat = () => {
   }
 
   // # -----------------------Calculation-----------------------------------------
+  // remove alert if it on screen
 
   alert.innerHTML = "";
 
